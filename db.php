@@ -108,6 +108,28 @@ class Db
         }   
     }
     
+    public function search_store($name)
+    {
+        $sql = "SELECT *
+                FROM dtb_store
+                WHERE name LIKE (:name)";
+
+        $stm = $this->pdo->prepare($sql);
+
+        $stm->bindValue(':name', "%{$name}%", PDO::PARAM_STR);
+        $stm->execute();
+        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    // public function select_store()
+    // {
+    //     $sql = "SELECT * FROM dtb_store";
+    //     $stm = $this->pdo->prepare($sql);
+    //     $stm->execute();
+    //     $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    //     return $result;
+    // }
 
     // 配列の文字エンコードのチェックを行う
     public function cken(array $data)

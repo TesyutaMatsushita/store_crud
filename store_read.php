@@ -18,6 +18,11 @@ $pdo = new Db();
 $pdo->conect_db();
 $result = $pdo->select_store();
 
+echo "<form action = store_search.php method=POST>";
+echo "<p>nameの都道府県で検索(部分一致) <br>";
+echo "<input type = 'text' name = 'name' placeholder = '都道府県名称を１文字以上入れてください'></p>";
+echo "<p><input type = 'submit' value = '検索する'</p>";
+echo "</form>";
 echo "<table>";
 echo "<thead><tr>";
 echo "<th>", "ID", "</th>";
